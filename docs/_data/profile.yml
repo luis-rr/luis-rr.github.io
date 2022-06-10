@@ -1,0 +1,20 @@
+image: assets/img/smile.jpg
+username: Luis Riquelme
+description: "Ph.D. Student in the [Gjorgjieva group](https://www1.ls.tum.de/compneuro/home/) at the [MPI for Brain Research](https://brain.mpg.de/gjor) in Frankfurt am Main, Germany."
+webpage: https://luis-rr.github.io
+# experience:
+#   - start: 2017-05-03
+#     end: 2018-05-06
+#     experience : company name, title
+# interests:
+#   - Interest 1
+#   - Interest 2
+# skills:
+#   - skill: HTML5 & CSS
+#     value: 85  # Percent value
+social:
+  email:  # Full email address, e.g. "sample@google.com"
+  orcid: https://orcid.org/0000-0003-4604-7405
+  scholar: https://scholar.google.co.uk/citations?user=l4WgXV0AAAAJ
+  github: luis-rr
+  twitter: luis_rr
