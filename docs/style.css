@@ -1,0 +1,694 @@
+/* ==========================================================================
+   Colours and fonts
+   ========================================================================== */
+
+/* Light theme (default) */
+:root {
+  --bg: #fff;
+  --ink: #121212;
+  --muted: #555555;
+  /* --accent: #8e1a63; */
+  --accent: #a3226d;
+  --line: #e0e0e0;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  color-scheme: light;
+}
+
+/* Dark theme (toggled with the button in the header) */
+:root[data-theme="dark"] {
+  /* --bg: #10141d; */
+  --bg: #141414;
+  --ink: #ededed;
+  --muted: #a8a8a8;
+  --accent: #e6339a;
+  --line: #333333;
+  color-scheme: dark;
+}
+
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 35px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+header,
+main,
+footer {
+  width: min(1160px, calc(100% - 96px));
+  margin: auto;
+}
+
+
+/* ==========================================================================
+   Header and navigation
+   ========================================================================== */
+
+header {
+  height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -.7px;
+}
+
+nav {
+  display: flex;
+  gap: 32px;
+  margin-left: auto;
+}
+
+nav a {
+  padding: 8px 0;
+}
+
+/* Light/dark toggle: shows a moon in light mode, a sun in dark mode */
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  margin-left: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+}
+
+.theme-toggle::before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: auto;
+  background: currentColor;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .theme-toggle::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4.5'/%3E%3Cpath d='M12 1.5v2M12 20.5v2M1.5 12h2M20.5 12h2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M4.6 19.4 6 18M18 6l1.4-1.4'/%3E%3C/svg%3E");
+}
+
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 70px;
+  align-items: center;
+  padding: 85px 0 95px;
+}
+
+h1 {
+  font-size: clamp(56px, 6.3vw, 84px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -4px;
+  margin: 0 0 25px;
+}
+
+/* Accent-coloured characters: "!" and "," in the title, dots after headings and the name */
+.accent {
+  color: var(--accent);
+}
+
+.tagline {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -.5px;
+  margin: 0 0 28px;
+}
+
+.position {
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.position a,
+.contact p a {
+  color: var(--ink);
+}
+
+/* Thin underline for links (hero, press releases, CV, contact, Scholar/LinkedIn).
+   On hover the underline turns accent; the text keeps its colour. */
+.position a,
+.venue a,
+.career a,
+.contact p a,
+.quicklinks a {
+  border-bottom: 1px solid var(--line);
+}
+
+.position a:hover,
+.venue a:hover,
+.career a:hover,
+.contact p a:hover,
+.quicklinks a:hover {
+  border-color: var(--accent);
+}
+
+.quicklinks {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.quicklinks a {
+  color: var(--accent);
+  padding-bottom: 4px;
+}
+
+figure {
+  margin: 0;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: 62% center;
+  border-radius: 6px;
+}
+
+
+/* ==========================================================================
+   Sections (Research, Publications, CV, Contact)
+   ========================================================================== */
+
+.section {
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 205px 1fr;
+  gap: 50px;
+  padding: 58px 0 70px;
+}
+
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.35;
+  letter-spacing: -.5px;
+}
+
+
+/* ==========================================================================
+   Research and publications
+   ========================================================================== */
+
+.section-text {
+  max-width: 780px;
+}
+
+.section-text p {
+  margin: 0 0 20px;
+}
+
+.section-text p:last-child {
+  margin-bottom: 0;
+}
+
+.paper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 27px;
+  border-top: 1px solid var(--line);
+  padding: 30px 0;
+}
+
+.paper:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.paper:last-child {
+  padding-bottom: 0;
+}
+
+.paper-image {
+  align-self: start;
+  margin-top: 4px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* Paper images are cropped to 3:2. To choose which part stays visible,
+   set object-position on the <img> in index.html (e.g. "75% center" = keep the right side). */
+.paper img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  transition: transform .3s;
+}
+
+.paper-image:hover img {
+  transform: scale(1.03);
+}
+
+/* Journal line, e.g. "Nature, 2024 · Press release" */
+.venue {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ", 2024" */
+.venue span {
+  font-weight: 400;
+}
+
+/* Dot between the year and the press release link */
+.venue span::after {
+  content: "·";
+  margin: 0 8px 0 12px;
+  color: var(--muted);
+}
+
+/* Press release / digest link next to the journal and year */
+.venue a {
+  font-weight: 400;
+  color: var(--ink);
+}
+
+h4 {
+  font-weight: 500;
+  margin: 9px 0 12px;
+}
+
+/* Links without a resting underline (nav, paper titles, "Back to top"):
+   an accent underline appears on hover; the text keeps its colour */
+nav a:hover,
+h4 a:hover,
+footer a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.authors {
+  color: var(--muted);
+  margin: 0;
+}
+
+.authors strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* "*equal contribution" at the end of the authors line */
+.equal {
+  margin-left: 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+
+/* ==========================================================================
+   CV (career timeline)
+   ========================================================================== */
+
+.career {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  gap: 24px;
+  padding: 14px 0;
+}
+
+.career,
+.career .date,
+.career p {
+  transition: color .15s;
+}
+
+.timeline > .career:first-child {
+  padding-top: 0;
+}
+
+/* Space between the CV intro line and the timeline */
+.section-text + .timeline {
+  margin-top: 46px;
+}
+
+.date {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.career h3 {
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin: 0 0 5px;
+}
+
+.career p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* The word "with" between job title and supervisor */
+.career .with {
+  font-weight: 400;
+}
+
+/* Hovering a CV entry or a map dot highlights both (see script.js) */
+.career.highlight,
+.career.highlight .date,
+.career.highlight p {
+  color: var(--accent);
+}
+
+/* ...except the supervisor's name, which keeps its colour */
+.career.highlight h3 a {
+  color: var(--ink);
+}
+
+/* Map of places lived and worked, under the "CV" heading */
+.cv-map {
+  margin-top: 32px;
+}
+
+.cv-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.map-land {
+  fill: var(--line);
+}
+
+.map-route {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-dasharray: 10 7;
+}
+
+.map-arrow {
+  fill: var(--accent);
+}
+
+.map-dots circle {
+  fill: var(--ink);
+  stroke: transparent;  /* invisible wider edge = easier to hover */
+  stroke-width: 14;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill .15s, transform .15s;
+}
+
+.map-dots .highlight {
+  fill: var(--accent);
+  transform: scale(1.6);
+}
+
+
+/* ==========================================================================
+   Contact and footer
+   ========================================================================== */
+
+.contact .section-content > p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Logo links inside a section (Scholar under "Publications", LinkedIn in Contact) */
+.section .quicklinks {
+  margin-top: 16px;
+}
+
+/* "See all here:" under the "Selected publications" heading: a bit larger so it stands out */
+#publications .quicklinks {
+  font-size: 19px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 0 35px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.skip {
+  position: absolute;
+  top: -70px;
+  left: 20px;
+  padding: 8px;
+  background: var(--bg);
+  z-index: 10;
+}
+
+.skip:focus {
+  top: 10px;
+}
+
+/* Logo after a link's text: <a class="icon-scholar"> or <a class="icon-linkedin">.
+   The PNG is used as a mask (only its transparency matters), so the logo
+   takes the link's text colour. */
+.icon-scholar::after,
+.icon-linkedin::after {
+  content: "";
+  display: inline-block;
+  width: 1.125em;
+  height: 1.125em;
+  margin-left: .5em;
+  vertical-align: -.2em;
+  background: currentColor;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.icon-scholar::after {
+  mask-image: url("assets/scholar-mask.png");
+}
+
+.icon-linkedin::after {
+  mask-image: url("assets/linkedin-mask.png");
+}
+
+/* Small arrow icon after a link: <a class="arrow"> (↗) or <a class="arrow-up"> (↑).
+   The SVG is used as a mask, so the icon takes the link's text colour. */
+.arrow::after,
+.arrow-up::after {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 6px;
+  vertical-align: -1px;
+  background: currentColor;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.arrow::after {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12 12 4M4 4h8v8'/%3E%3C/svg%3E");
+}
+
+.arrow-up::after {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 13V3M3 8l5-5 5 5'/%3E%3C/svg%3E");
+}
+
+
+/* ==========================================================================
+   Responsive: tablet
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+  header,
+  main,
+  footer {
+    width: calc(100% - 56px);
+  }
+
+  .hero {
+    gap: 35px;
+  }
+
+  .portrait img {
+    height: 330px;
+  }
+
+  .section {
+    grid-template-columns: 160px 1fr;
+    gap: 30px;
+  }
+
+  .paper {
+    grid-template-columns: 150px 1fr;
+    gap: 22px;
+  }
+
+  .career {
+    grid-template-columns: 135px 1fr;
+    gap: 18px;
+  }
+}
+
+
+/* ==========================================================================
+   Responsive: phone
+   ========================================================================== */
+
+@media (max-width: 700px) {
+  header,
+  main,
+  footer {
+    width: calc(100% - 40px);
+  }
+
+  header {
+    position: relative;
+    height: auto;
+    min-height: 100px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+  }
+
+  nav {
+    gap: 25px;
+    margin-left: 0;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 16px;
+    right: 0;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 45px 0 48px;
+    gap: 34px;
+  }
+
+  h1 {
+    font-size: 60px;
+    letter-spacing: -3px;
+  }
+
+  .portrait img {
+    height: auto;
+    aspect-ratio: 1.5;
+    object-position: center;
+  }
+
+  .section {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 36px 0 45px;
+  }
+
+  /* No map on phones: it would push the CV down too far */
+  .cv-map {
+    display: none;
+  }
+
+  .section-text + .timeline {
+    margin-top: 34px;
+  }
+
+  .paper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 26px 0;
+  }
+
+  .paper-image {
+    max-width: 320px;
+  }
+
+  .career {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .career h3 {
+    margin-bottom: 3px;
+  }
+
+  .quicklinks {
+    gap: 25px;
+  }
+
+  footer {
+    gap: 25px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}

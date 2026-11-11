@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- "J.L" set in Inter SemiBold (letters converted to outlines), magenta dot = site accent.
+       The letters turn light when the browser is in dark mode. -->
+  <style>.ink{fill:#121212}@media (prefers-color-scheme: dark){.ink{fill:#ededed}}</style>
+  <path class="ink" transform="translate(3.25 48.53) scale(0.02249 -0.02249)" d="M560 -20Q339 -20 208.5 99.5Q78 219 78 440V525H345V438Q345 320 403.5 260.0Q462 200 560 200Q657 200 715.0 260.5Q773 321 773 438V1490H1038V441Q1038 219 908.5 99.5Q779 -20 560 -20Z"/>
+  <path fill="#a3226d" transform="translate(24.01 48.53) scale(0.02249 -0.02249)" d="M326 -17Q259 -17 212.5 29.0Q166 75 166 143Q166 210 212.5 256.0Q259 302 326 302Q394 302 440.5 256.0Q487 210 487 143Q487 75 440.5 29.0Q394 -17 326 -17Z"/>
+  <path class="ink" transform="translate(34.82 48.53) scale(0.02249 -0.02249)" d="M150 0V1490H417V225H1075V0Z"/>
+</svg>
