@@ -501,12 +501,13 @@ footer {
   top: 10px;
 }
 
-/* Logo after a link's text: <a class="icon-scholar">, <a class="icon-orcid"> or <a class="icon-linkedin">.
+/* Logo after a link's text: <a class="icon-scholar">, "icon-orcid", "icon-linkedin" or "icon-github".
    The PNG is used as a mask (only its transparency matters), so the logo
    takes the link's text colour. */
 .icon-scholar::after,
 .icon-orcid::after,
-.icon-linkedin::after {
+.icon-linkedin::after,
+.icon-github::after {
   content: "";
   display: inline-block;
   width: 1.125em;
@@ -528,6 +529,10 @@ footer {
 
 .icon-linkedin::after {
   mask-image: url("assets/linkedin-mask.png");
+}
+
+.icon-github::after {
+  mask-image: url("assets/github-mask.svg");
 }
 
 /* Small arrow icon after a link: <a class="arrow"> (↗) or <a class="arrow-up"> (↑).
