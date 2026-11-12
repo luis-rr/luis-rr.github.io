@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- ORCID "iD" mark: a circle with the letters cut out (used as a CSS mask, see style.css) -->
+  <path fill-rule="evenodd" d="
+    M0 128 a128 128 0 1 0 256 0 a128 128 0 1 0 -256 0 Z
+    M68 75 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z
+    M70 98 h16 v93 h-16 Z
+    M102 98 h40 a46.5 46.5 0 0 1 0 93 h-40 Z
+    M118 113 h24 a31.5 31.5 0 0 1 0 63 h-24 Z"/>
+</svg>

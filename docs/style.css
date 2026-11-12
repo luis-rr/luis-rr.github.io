@@ -468,9 +468,11 @@ footer a:hover {
   margin-top: 16px;
 }
 
-/* "See all here:" under the "Selected publications" heading: a bit larger so it stands out */
+/* "See all here:" and "ORCID" under the "Selected publications" heading:
+   a bit larger so they stand out, stacked closer together */
 #publications .quicklinks {
   font-size: 19px;
+  row-gap: 14px;
 }
 
 footer {
@@ -499,10 +501,11 @@ footer {
   top: 10px;
 }
 
-/* Logo after a link's text: <a class="icon-scholar"> or <a class="icon-linkedin">.
+/* Logo after a link's text: <a class="icon-scholar">, <a class="icon-orcid"> or <a class="icon-linkedin">.
    The PNG is used as a mask (only its transparency matters), so the logo
    takes the link's text colour. */
 .icon-scholar::after,
+.icon-orcid::after,
 .icon-linkedin::after {
   content: "";
   display: inline-block;
@@ -517,6 +520,10 @@ footer {
 
 .icon-scholar::after {
   mask-image: url("assets/scholar-mask.png");
+}
+
+.icon-orcid::after {
+  mask-image: url("assets/orcid-mask.svg");
 }
 
 .icon-linkedin::after {
