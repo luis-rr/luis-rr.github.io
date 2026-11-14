@@ -10,6 +10,11 @@
   /* --accent: #8e1a63; */
   --accent: #a3226d;
   --line: #e0e0e0;
+  /* Text sizes: the whole site uses only these four */
+  --size-large: clamp(38px, 3.8vw, 48px);  /* greeting */
+  --size-big: 24px;                         /* section headings, name in the header */
+  --size-normal: 18px;                      /* intro lines, nav, paper titles, logo links */
+  --size-small: 16px;                       /* body text */
   --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   color-scheme: light;
 }
@@ -44,7 +49,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: var(--size-small);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
@@ -81,7 +86,7 @@ header {
 }
 
 .brand {
-  font-size: 24px;
+  font-size: var(--size-big);
   font-weight: 600;
   letter-spacing: -.7px;
 }
@@ -90,6 +95,7 @@ nav {
   display: flex;
   gap: 32px;
   margin-left: auto;
+  font-size: var(--size-normal);
 }
 
 nav a {
@@ -142,10 +148,10 @@ nav a {
 }
 
 h1 {
-  font-size: clamp(56px, 6.3vw, 84px);
+  font-size: var(--size-large);
   font-weight: 600;
   line-height: 1.08;
-  letter-spacing: -4px;
+  letter-spacing: -2px;
   margin: 0 0 25px;
 }
 
@@ -154,17 +160,17 @@ h1 {
   color: var(--accent);
 }
 
+/* "I do neuroscience with computers." Same size as the line below it,
+   so the hero reads as one short introduction after the greeting. */
 .tagline {
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -.5px;
-  margin: 0 0 28px;
+  font-size: var(--size-normal);
+  line-height: 1.7;
+  margin: 0 0 12px;
 }
 
 .position {
-  color: var(--muted);
-  line-height: 1.8;
+  font-size: var(--size-normal);
+  line-height: 1.7;
   margin: 0;
 }
 
@@ -196,6 +202,7 @@ h1 {
   gap: 28px;
   flex-wrap: wrap;
   margin-top: 28px;
+  font-size: var(--size-normal);
 }
 
 .quicklinks a {
@@ -234,7 +241,7 @@ h3,
 h4 {
   margin: 0;
   font-weight: 600;
-  font-size: 24px;
+  font-size: var(--size-big);
   line-height: 1.35;
   letter-spacing: -.5px;
 }
@@ -258,7 +265,7 @@ h4 {
 
 .paper {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 180px 1fr;
   gap: 27px;
   border-top: 1px solid var(--line);
   padding: 30px 0;
@@ -318,9 +325,12 @@ h4 {
   color: var(--ink);
 }
 
+/* Paper titles */
 h4 {
+  font-size: var(--size-normal);
   font-weight: 500;
-  margin: 9px 0 12px;
+  letter-spacing: 0;
+  margin: 6px 0 8px;
 }
 
 /* Links without a resting underline (nav, paper titles, "Back to top"):
@@ -373,6 +383,11 @@ footer a:hover {
   padding-top: 0;
 }
 
+/* The one-line CV intro: normal size, like the hero intro */
+#cv .section-text {
+  font-size: var(--size-normal);
+}
+
 /* Space between the CV intro line and the timeline */
 .section-text + .timeline {
   margin-top: 46px;
@@ -384,7 +399,7 @@ footer a:hover {
 }
 
 .career h3 {
-  font-size: 16px;
+  font-size: var(--size-small);
   line-height: 1.65;
   font-weight: 600;
   letter-spacing: 0;
@@ -468,10 +483,8 @@ footer a:hover {
   margin-top: 16px;
 }
 
-/* "See all here:" and "ORCID" under the "Selected publications" heading:
-   a bit larger so they stand out, stacked closer together */
+/* "See all here:" and "ORCID" under the "Selected publications" heading: stacked closer together */
 #publications .quicklinks {
-  font-size: 19px;
   row-gap: 14px;
 }
 
@@ -632,11 +645,6 @@ footer {
     grid-template-columns: 1fr;
     padding: 45px 0 48px;
     gap: 34px;
-  }
-
-  h1 {
-    font-size: 60px;
-    letter-spacing: -3px;
   }
 
   .portrait img {
